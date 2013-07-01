@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+				xmlns:xlink="http://www.w3.org/1999/xlink" width="320px"
+				height="340px">
+
+    <defs>
+    <filter id="blurshadow" x="0" y="0" width="150%" height="150%">
+      <feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="15" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+  </defs>
+  
+<g transform="translate(160,90)">
+  <g id="doCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)">
+  
+    <path class="cardOutline" fill="steelblue"
+					d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z"
+					stroke-width="4" stroke="grey" />
+   
+    <foreignObject class="cardFront" x="-80" y="-20" width="160"
+					height="80" display="none" transform="matrix(1 0 0 -1 0 0)">
+				<strong>Do text</strong></foreignObject>
+				   
+    <text class="cardBack" fill="white" stroke-color="black"
+					stroke-width="2" stroke-dasharray="null" stroke-linejoin="null"
+					stroke-linecap="null" x="0" y="20" font-size="96"
+					font-style="italic" font-weight="bold" font-family="sans-serif"
+					text-anchor="middle" xml:space="preserve" stroke="#000000"
+					filter="url(#blurshadow)">do</text>
+    </g>
+</g>
+
+ <g transform="translate(160,260)">
+  <g id="asCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)">
+  
+    <path class="cardOutline" fill="steelblue"
+					d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z"
+					stroke-width="4" stroke="grey" />
+   
+    <foreignObject class="cardFront" x="-80" y="-20" width="160"
+					height="80" display="none" transform="matrix(1 0 0 -1 0 0)">
+				<strong>As text</strong></foreignObject>
+     
+     <text class="cardBack" fill="white" stroke-color="black"
+					stroke-width="2" stroke-dasharray="null" stroke-linejoin="null"
+					stroke-linecap="null" x="0" y="20" font-size="96"
+					font-style="italic" font-weight="bold" font-family="sans-serif"
+					text-anchor="middle" xml:space="preserve" stroke="#000000"
+					filter="url(#blurshadow)">as</text>
+
+    </g>
+</g>
+</svg>

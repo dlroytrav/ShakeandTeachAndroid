@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<title>Shake and Teach</title>
+</head>
+<body>
+
+<div id="navigation">
+	<button type="button" id="sandt-nav"    class="icon-button" onclick="navigateToAppPage('sandt')">   <img src="img/sandt.png"    alt="S&amp;T" /> <br />S&amp;T </button>
+	<button type="button" id="subjects-nav" class="icon-button" onclick="navigateToAppPage('subjects')"><img src="img/subjects.png" alt="Subjects" /><br />Subjects</button>
+	<button type="button" id="share-nav"    class="icon-button" onclick="navigateToAppPage('share')">   <img src="img/share.png"    alt="Share" />   <br />Share   </button>	
+	<button type="button" id="faq-nav"      class="icon-button" onclick="navigateToAppPage('faq')">     <img src="img/faq.png"      alt="FAQ" />     <br />FAQ     </button>
+	<button type="button" id="about-nav"    class="icon-button" onclick="navigateToAppPage('about')">   <img src="img/about.png"    alt="About" />   <br />About   </button>
+</div>
+
+<div id="appScreenArea">
+
+<div class="appPage" id="splash">
+	<img src="splash.png" alt="">
+</div>
+
+<div class="appPage" id="sandt">
+		
+<svg id="do-as-cards" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+	<defs>
+		<filter id="blurshadow" x="0" y="0" width="150%" height="150%">
+			<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="15" />
+			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+		</filter>
+	</defs>
+  
+	<g transform="translate(160,86)">
+		<g id="doCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)">					
+ 			<path class="cardOutline" fill="steelblue" d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z" stroke-width="4" stroke="grey" />
+    		<foreignObject class="cardFace" x="-120" y="-60" width="240" height="120">do</foreignObject>
+		</g>
+	</g>
+
+	<g transform="translate(160,253)">
+		<g id="asCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)">
+			<path class="cardOutline" fill="steelblue" stroke-width="4" stroke="grey" d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z"/>
+			<foreignObject class="cardFace" x="-120" y="-60" width="240" height="120">as</foreignObject>
+       	</g>
+	</g>
+
+</svg>
+
+<div id="spin>">
+	<form id="spin_button_form" action="">
+		<button type="button" id="spin_button" onclick="spin()">Spin!</button>
+	</form>
+	<p id="current_subject">All</p>
+</div>
+
+</div>
+
+<div class="appPage" id="subjects">
+	<h1>Subjects</h1>
+	<img src="img/subjects.png" alt="Subjects" />
+	<p>Choose a subject and the projects to <strong>do</strong> will be selected from relevant choices:</p>
+	<form id="choose_subject_form" action="">
+		<select id="choose_subject_select" onchange="set_subject(this.options[selectedIndex].text)">
+			<option value="all">All</option>
+			<option value="art">Art</option>
+			<option value="english">English</option>
+			<option value="geography">Geography</option>
+			<option value="history">History</option>
+			<option value="maths">Maths</option>
+			<option value="music">Music</option>
+			<option value="pe">Physical Education</option>
+			<option value="re">Religious Education</option>
+			<option value="science">Science</option>
+			<option value="ss">Social Studies</option>
+			<option value="technology">Technology</option>
+		</select>
+	</form>
+	<p>The current subject you have chosen appears on the S&amp;T screen to remind you.
+</div>
+
+<div class="appPage" id="share">
+	<h1>Share</h1>
+	<img src="img/share.png" alt="Share" />
+	<p>Challenge someone with this project to <strong>do</strong> and genre/media to present it <strong>as</strong> with your friends and colleagues on Email, FaceBook, Tweet...</p>
+	<p>[ this option will trigger the email client on the device ]</p>
+</div>
+
+<div class="appPage" id="faq">
+	<h1>FAQ</h1>
+	<img src="img/faq.png" alt="FAQ" />
+	<h2>Frequently Asked Questions</h2>
+	<p>Q: &quot;How do you use this app in the classroom?&quot;</p>
+	<p>A: Navigate to the S&amp;T page and shake your mobile. This triggers the cards to flip and present a project idea to <strong>do</strong> and a genre / medium to present it <strong>as</strong>.
+	<p>Q: &quot;What if I don't understand the <strong>do</strong> or <strong>as</strong>?&quot;</p>
+	<p>A: Click on the card to find out more on the web.</p>
+	<p>...</p>
+</div>
+		
+<div class="appPage" id="about">
+	<h1>About</h1>
+	<img src="img/about.png" alt="About" />
+	<h2>Shake &amp; Teach</h2>
+	<p>is a support tool for teachers:</p>
+	<ul>
+		<li>use it for  lesson starters, review of prior learning, or performance assessment activities.</li>
+		<li>or in those moments when we all get stuck for a fresh idea or a new approach during a lesson.</li>
+	</ul>
+	<p>Instead of the "just write about it" inertia, you are now just a shake away from thousands of possible activities.</p>
+	<p>When shaken (or clicked) this app will generate 100,000 unique learning challenge teaching ideas.</p>
+	<p>Shake &amp; Teach built by DavittMedia - Code Richard Millwood ...From an original idea from John Davitt.</p>
+	<p>&copy; 2013 All Rights Reserved DavittMedia.</p>
+</div>
+
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+<script type="text/javascript" src="do_text.js"></script>
+<script type="text/javascript" src="as_text.js"></script>
+<script type="text/javascript" src="code.js"></script>
+
+<script type="text/javascript">
+	app.initialize();
+</script>
+
+</body>
+</html>
