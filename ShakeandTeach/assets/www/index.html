@@ -4,11 +4,19 @@
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport"
-	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
+<script>
+     function onLoad(){
+          document.addEventListener("deviceready", onDeviceReady, true);
+     }
+     function onDeviceReady(){
+//navigator.notification.alert("PhoneGap is working!!");
+     }
+  </script>
 <title>Shake and Teach</title>
 </head>
-<body>
+<body onload="onLoad();">
 
 <div id="navigation">
 	<button type="button" id="sandt-nav"    class="icon-button" onclick="navigateToAppPage('sandt')">   <img src="img/sandt.png"    alt="S&amp;T" /> <br />S&amp;T </button>
@@ -21,43 +29,30 @@
 <div id="appScreenArea">
 
 <div class="appPage" id="splash">
-	<img src="splash.png" alt="">
+	<img src="splash.png" alt="" height="100%" width="100%">
 </div>
 
 <div class="appPage" id="sandt">
+	<button type="button" id="spin_button" onclick="spin()">Spin!</button>
+<p id="current_subject">All</p>
 		
-<svg id="do-as-cards" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-	<defs>
-		<filter id="blurshadow" x="0" y="0" width="150%" height="150%">
-			<feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
-			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="15" />
-			<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-		</filter>
-	</defs>
-  
+<svg id="do-as-cards" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0,0,320,340" preserveAspectRatio="xMidYMin">
+ 
 	<g transform="translate(160,86)">
-		<g id="doCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)">					
- 			<path class="cardOutline" fill="steelblue" d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z" stroke-width="4" stroke="grey" />
+		<g id="doCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)" onclick="spin()">					
+ 			<path class="cardOutline" d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z" />
     		<foreignObject class="cardFace" x="-120" y="-60" width="240" height="120">do</foreignObject>
 		</g>
 	</g>
 
 	<g transform="translate(160,253)">
-		<g id="asCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)">
-			<path class="cardOutline" fill="steelblue" stroke-width="4" stroke="grey" d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z"/>
+		<g id="asCard" class="animatedCard" transform="matrix(1 0 0 1 0 0)" onclick="spin()"">
+			<path class="cardOutline" d="m -150,-60 c 0,-10 10,-20 20,-20 l260,0 c 10,0 20,10 20,20 l 0,120 c 0,10 -10,20 -20,20 l -260,0 c -10,0 -20,-10 -20,-20 l 0,-120 z"/>
 			<foreignObject class="cardFace" x="-120" y="-60" width="240" height="120">as</foreignObject>
        	</g>
 	</g>
 
 </svg>
-
-<div id="spin>">
-	<form id="spin_button_form" action="">
-		<button type="button" id="spin_button" onclick="spin()">Spin!</button>
-	</form>
-	<p id="current_subject">All</p>
-</div>
 
 </div>
 
@@ -65,30 +60,17 @@
 	<h1>Subjects</h1>
 	<img src="img/subjects.png" alt="Subjects" />
 	<p>Choose a subject and the projects to <strong>do</strong> will be selected from relevant choices:</p>
-	<form id="choose_subject_form" action="">
 		<select id="choose_subject_select" onchange="set_subject(this.options[selectedIndex].text)">
-			<option value="all">All</option>
-			<option value="art">Art</option>
-			<option value="english">English</option>
-			<option value="geography">Geography</option>
-			<option value="history">History</option>
-			<option value="maths">Maths</option>
-			<option value="music">Music</option>
-			<option value="pe">Physical Education</option>
-			<option value="re">Religious Education</option>
-			<option value="science">Science</option>
-			<option value="ss">Social Studies</option>
-			<option value="technology">Technology</option>
 		</select>
-	</form>
 	<p>The current subject you have chosen appears on the S&amp;T screen to remind you.
 </div>
 
 <div class="appPage" id="share">
 	<h1>Share</h1>
 	<img src="img/share.png" alt="Share" />
-	<p>Challenge someone with this project to <strong>do</strong> and genre/media to present it <strong>as</strong> with your friends and colleagues on Email, FaceBook, Tweet...</p>
-	<p>[ this option will trigger the email client on the device ]</p>
+	<p>Challenge one of  your friends and colleagues:</p>
+	<p><a href="mailto: ?subject=Shake & Teach Challenge&body=You have been sent a creative challenge from Shake & Teach. Should you choose to accept it, your task is to:">Email this challenge</a>
+</p>
 </div>
 
 <div class="appPage" id="faq">
@@ -113,8 +95,9 @@
 	</ul>
 	<p>Instead of the "just write about it" inertia, you are now just a shake away from thousands of possible activities.</p>
 	<p>When shaken (or clicked) this app will generate 100,000 unique learning challenge teaching ideas.</p>
-	<p>Shake &amp; Teach built by DavittMedia - Code Richard Millwood ...From an original idea from John Davitt.</p>
-	<p>&copy; 2013 All Rights Reserved DavittMedia.</p>
+	<p>Built on an original idea by John Davitt  © DavittMedia. www.davittlearning.net
+
+	<p>© 2013 All rights to Shake&Teach reserved Intel Corporation</p>
 </div>
 
 </div>
